@@ -1,0 +1,547 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About | WANDERAP">
+
+  <main class="about-page">
+
+    <!-- PAGE HEADER -->
+
+    <section class="about-header">
+
+      <p class="label">
+        ABOUT WANDERAP
+      </p>
+
+      <h1>
+        Discover Andhra Pradesh
+        <em>with us.</em>
+      </h1>
+
+      <p class="intro-text">
+        WANDERAP is a simple travel platform created
+        to help people discover beautiful places,
+        experiences and stays across Andhra Pradesh.
+      </p>
+
+    </section>
+
+
+    <!-- ABOUT CONTENT -->
+
+    <section class="about-content">
+
+      <div class="about-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=85"
+          alt="Beautiful landscape in Andhra Pradesh"
+        />
+
+      </div>
+
+
+      <div class="about-text">
+
+        <p class="label">
+          WHY WANDERAP
+        </p>
+
+        <h2>
+          Travel should be
+          <em>simple.</em>
+        </h2>
+
+        <p>
+          Finding a beautiful place to visit should
+          not feel complicated. WANDERAP brings
+          destinations, experiences and stays together
+          in one simple place.
+        </p>
+
+        <p>
+          From coastal beaches and peaceful valleys
+          to green mountains and quiet escapes,
+          we want to make discovering Andhra Pradesh
+          easier and more enjoyable.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- WHAT WE OFFER -->
+
+    <section class="features">
+
+      <div class="features-heading">
+
+        <p class="label">
+          WANDERAP
+        </p>
+
+        <h2>
+          Everything you need
+          <em>to explore.</em>
+        </h2>
+
+      </div>
+
+
+      <div class="feature-grid">
+
+        <div class="feature">
+
+          <span class="number">
+            01
+          </span>
+
+          <h3>
+            Destinations
+          </h3>
+
+          <p>
+            Discover interesting places across
+            Andhra Pradesh and find your next
+            destination.
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <span class="number">
+            02
+          </span>
+
+          <h3>
+            Experiences
+          </h3>
+
+          <p>
+            Explore things to do, places to visit
+            and memorable experiences.
+          </p>
+
+        </div>
+
+
+        <div class="feature">
+
+          <span class="number">
+            03
+          </span>
+
+          <h3>
+            Stays
+          </h3>
+
+          <p>
+            Find comfortable places to stay while
+            exploring your favourite destinations.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+      <p class="label">
+        START EXPLORING
+      </p>
+
+      <h2>
+        Your next journey
+        <em>starts here.</em>
+      </h2>
+
+      <a href="/destinations">
+        Explore Destinations →
+      </a>
+
+    </section>
+
+  </main>
+
+</Layout>
+
+
+<style>
+
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(body) {
+  margin: 0;
+  background: #f5f4f0;
+  color: #222;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:global(a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.about-header {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding:
+    100px 25px
+    55px;
+
+  text-align: center;
+}
+
+.label {
+  margin: 0 0 14px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #777;
+}
+
+.about-header h1 {
+  margin: 0;
+
+  font-size:
+    clamp(42px, 6vw, 72px);
+
+  line-height: 1;
+
+  letter-spacing: -3px;
+
+  font-weight: 600;
+}
+
+.about-header h1 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.intro-text {
+  max-width: 620px;
+
+  margin:
+    24px auto 0;
+
+  color: #666;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   ABOUT CONTENT
+========================= */
+
+.about-content {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding:
+    30px 25px
+    80px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.1fr 1fr;
+
+  gap: 55px;
+
+  align-items: center;
+}
+
+
+/* IMAGE */
+
+.about-image {
+  width: 100%;
+  height: 480px;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* TEXT */
+
+.about-text {
+  max-width: 500px;
+}
+
+.about-text h2 {
+  margin:
+    0 0 22px;
+
+  font-size:
+    clamp(38px, 5vw, 58px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  font-weight: 600;
+}
+
+.about-text h2 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.about-text p:not(.label) {
+  margin:
+    0 0 18px;
+
+  color: #666;
+
+  font-size: 15px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding:
+    75px 25px
+    85px;
+
+  border-top:
+    1px solid #dedcd5;
+}
+
+.features-heading {
+  margin-bottom: 35px;
+}
+
+.features-heading h2 {
+  max-width: 650px;
+
+  margin: 0;
+
+  font-size:
+    clamp(34px, 5vw, 52px);
+
+  line-height: 1;
+
+  letter-spacing: -2px;
+
+  font-weight: 600;
+}
+
+.features-heading h2 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+
+/* FEATURE GRID */
+
+.feature-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.feature {
+  padding:
+    25px;
+
+  background: #fff;
+
+  border:
+    1px solid #e5e3dd;
+
+  border-radius: 4px;
+}
+
+.number {
+  display: block;
+
+  margin-bottom: 28px;
+
+  font-size: 10px;
+
+  color: #888;
+
+  letter-spacing: 2px;
+}
+
+.feature h3 {
+  margin:
+    0 0 10px;
+
+  font-size: 22px;
+
+  font-weight: 600;
+}
+
+.feature p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 14px;
+
+  line-height: 1.65;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+  padding:
+    85px 20px;
+
+  text-align: center;
+
+  background: #e8e5dc;
+}
+
+.cta h2 {
+  max-width: 700px;
+
+  margin:
+    10px auto 28px;
+
+  font-size:
+    clamp(40px, 6vw, 65px);
+
+  line-height: .95;
+
+  letter-spacing: -3px;
+}
+
+.cta h2 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.cta a {
+  display: inline-block;
+
+  padding:
+    13px 20px;
+
+  background: #222;
+
+  color: white;
+
+  border-radius: 3px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.cta a:hover {
+  opacity: .85;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 750px) {
+
+  .about-header {
+    padding:
+      80px 20px
+      40px;
+  }
+
+  .about-header h1 {
+    font-size: 43px;
+    letter-spacing: -2px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    padding:
+      20px
+      55px;
+  }
+
+  .about-image {
+    height: 330px;
+  }
+
+  .about-text {
+    max-width: none;
+  }
+
+  .features {
+    padding:
+      55px 20px
+      65px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+  .feature {
+    padding: 22px;
+  }
+
+  .cta {
+    padding:
+      70px 20px;
+  }
+
+}
+
+</style>

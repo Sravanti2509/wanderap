@@ -1,0 +1,596 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Stays | WANDERAP">
+
+  <main class="stays-page">
+
+    <!-- PAGE INTRO -->
+
+    <section class="page-intro">
+
+      <div>
+        <p class="label">WANDERAP STAYS</p>
+
+        <h1>
+          Stay somewhere<br />
+          <em>beautiful.</em>
+        </h1>
+      </div>
+
+      <p class="intro-text">
+        Comfortable places to stay while you
+        explore the beautiful destinations of
+        Andhra Pradesh.
+      </p>
+
+    </section>
+
+
+    <!-- STAYS -->
+
+    <section class="stays">
+
+      <div class="section-title">
+        <div>
+          <p class="label">PLACES TO STAY</p>
+          <h2>Find your stay</h2>
+        </div>
+
+        <p>
+          Simple stays. Beautiful surroundings.
+        </p>
+      </div>
+
+
+      <div class="stay-grid">
+
+
+        <!-- STAY 1 -->
+
+        <article class="stay-card">
+
+          <div class="stay-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=85"
+              alt="Lambasingi Nature Stay"
+            />
+
+          </div>
+
+          <div class="stay-content">
+
+            <span class="location">
+              LAMBASINGI
+            </span>
+
+            <h3>
+              Lambasingi Nature Stay
+            </h3>
+
+            <p>
+              Enjoy cool weather, peaceful surroundings
+              and beautiful mountain views.
+            </p>
+
+            <div class="stay-bottom">
+
+              <strong>
+                From ₹4,000
+              </strong>
+
+              <a href="/destinations">
+                Explore →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- STAY 2 -->
+
+        <article class="stay-card">
+
+          <div class="stay-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
+              alt="Araku Valley Stay"
+            />
+
+          </div>
+
+          <div class="stay-content">
+
+            <span class="location">
+              ARAKU VALLEY
+            </span>
+
+            <h3>
+              Araku Valley Stay
+            </h3>
+
+            <p>
+              Stay close to green hills, coffee
+              plantations and peaceful valleys.
+            </p>
+
+            <div class="stay-bottom">
+
+              <strong>
+                From ₹3,500
+              </strong>
+
+              <a href="/destinations">
+                Explore →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- STAY 3 -->
+
+        <article class="stay-card">
+
+          <div class="stay-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85"
+              alt="Vizag Coastal Stay"
+            />
+
+          </div>
+
+          <div class="stay-content">
+
+            <span class="location">
+              VIZAG
+            </span>
+
+            <h3>
+              Vizag Coastal Stay
+            </h3>
+
+            <p>
+              Stay near the coast and enjoy beaches,
+              sea views and a relaxed atmosphere.
+            </p>
+
+            <div class="stay-bottom">
+
+              <strong>
+                From ₹3,000
+              </strong>
+
+              <a href="/destinations">
+                Explore →
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- SIMPLE CTA -->
+
+    <section class="stay-cta">
+
+      <p class="label">
+        PLAN YOUR JOURNEY
+      </p>
+
+      <h2>
+        Find a place<br />
+        <em>you'll love.</em>
+      </h2>
+
+      <a href="/destinations">
+        Explore Destinations →
+      </a>
+
+    </section>
+
+  </main>
+
+</Layout>
+
+
+<style>
+
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(body) {
+  margin: 0;
+  background: #f4f1ea;
+  color: #20211f;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+:global(a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================
+   PAGE INTRO
+========================= */
+
+.page-intro {
+  padding: 125px 8% 65px;
+
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+
+  align-items: end;
+  gap: 60px;
+
+  background: #f4f1ea;
+}
+
+.label {
+  margin: 0 0 12px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+
+  color: #777;
+}
+
+.page-intro h1 {
+  margin: 0;
+
+  font-size: clamp(48px, 6vw, 72px);
+
+  line-height: .95;
+  letter-spacing: -3px;
+
+  font-weight: 600;
+}
+
+.page-intro h1 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.intro-text {
+  max-width: 420px;
+
+  margin: 0;
+
+  color: #6d6d68;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   STAYS SECTION
+========================= */
+
+.stays {
+  padding: 45px 8% 80px;
+}
+
+.section-title {
+  display: flex;
+
+  align-items: end;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.section-title h2 {
+  margin: 0;
+
+  font-size: 34px;
+  font-weight: 600;
+
+  letter-spacing: -1px;
+}
+
+.section-title > p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.stay-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.stay-card {
+  overflow: hidden;
+
+  background: #fff;
+
+  border: 1px solid #e4e1d9;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.stay-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, .08);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.stay-image {
+  width: 100%;
+  height: 250px;
+
+  overflow: hidden;
+
+  background: #ddd;
+}
+
+.stay-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform .5s ease;
+}
+
+.stay-card:hover
+.stay-image img {
+  transform: scale(1.04);
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.stay-content {
+  padding: 22px;
+}
+
+.location {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #888;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.stay-content h3 {
+  margin: 0 0 10px;
+
+  font-size: 23px;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+.stay-content > p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.stay-bottom {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 20px;
+  padding-top: 16px;
+
+  border-top:
+    1px solid #eceae4;
+}
+
+.stay-bottom strong {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stay-bottom a {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.stay-bottom a:hover {
+  opacity: .55;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.stay-cta {
+  padding: 80px 20px;
+
+  text-align: center;
+
+  background: #ded9cd;
+}
+
+.stay-cta h2 {
+  margin: 12px 0 25px;
+
+  font-size:
+    clamp(42px, 6vw, 65px);
+
+  line-height: .95;
+  letter-spacing: -2px;
+
+  font-weight: 600;
+}
+
+.stay-cta h2 em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+
+.stay-cta a {
+  display: inline-block;
+
+  padding: 13px 20px;
+
+  background: #20211f;
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  border-radius: 3px;
+}
+
+.stay-cta a:hover {
+  opacity: .85;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .page-intro {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+
+    padding-top: 110px;
+  }
+
+  .stay-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  .page-intro {
+    padding:
+      105px 6% 50px;
+  }
+
+  .page-intro h1 {
+    font-size: 46px;
+    letter-spacing: -2px;
+  }
+
+  .stays {
+    padding:
+      35px 6% 65px;
+  }
+
+  .section-title {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 22px;
+  }
+
+  .section-title h2 {
+    font-size: 30px;
+  }
+
+  .stay-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .stay-image {
+    height: 230px;
+  }
+
+  .stay-content {
+    padding: 20px;
+  }
+
+  .stay-content h3 {
+    font-size: 21px;
+  }
+
+  .stay-cta {
+    padding: 70px 20px;
+  }
+
+}
+
+</style>

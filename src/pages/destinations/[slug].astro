@@ -1,0 +1,535 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { sanityClient } from "../../lib/sanity";
+import { urlFor } from "../../lib/sanityImage";
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+
+const destination = await sanityClient.fetch(
+  `
+    *[_type == "place" && slug.current == $slug][0] {
+      _id,
+      title,
+      description,
+      region,
+      price,
+      photo,
+      "slug": slug.current
+    }
+  `,
+  { slug }
+);
+
+if (!destination) {
+  return Astro.redirect("/destinations");
+}
+
+const imageUrl = destination.photo
+  ? urlFor(destination.photo)
+      .width(1800)
+      .height(1100)
+      .quality(90)
+      .url()
+  : null;
+---
+
+<Layout title={`${destination.title} | WANDERAP`}>
+
+  <main class="page">
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      {imageUrl ? (
+        <img
+          src={imageUrl}
+          alt={destination.title}
+        />
+      ) : (
+        <div class="no-image">
+          WANDERAP
+        </div>
+      )}
+
+      <div class="overlay"></div>
+
+      <div class="hero-content">
+
+        <a href="/destinations" class="back">
+          ← Destinations
+        </a>
+
+        <div class="hero-text">
+
+          <p>
+            {destination.region}
+          </p>
+
+          <h1>
+            {destination.title}
+          </h1>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DETAILS -->
+
+    <section class="details">
+
+      <div class="heading">
+
+        <span>DESTINATION</span>
+
+        <h2>
+          Discover
+          <em>{destination.title}</em>
+        </h2>
+
+      </div>
+
+
+      <div class="content">
+
+        <p>
+          {destination.description}
+        </p>
+
+        <div class="info">
+
+          <div>
+            <span>LOCATION</span>
+            <strong>
+              {destination.region}
+            </strong>
+          </div>
+
+          <div>
+            <span>STARTING PRICE</span>
+            <strong>
+              ₹{destination.price}
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- BOTTOM -->
+
+    <section class="bottom">
+
+      <div>
+
+        <span>EXPLORE MORE</span>
+
+        <h2>
+          Discover more
+          <em>places.</em>
+        </h2>
+
+      </div>
+
+      <a href="/destinations">
+        View Destinations →
+      </a>
+
+    </section>
+
+  </main>
+
+</Layout>
+
+
+<style>
+
+:global(*) {
+  box-sizing: border-box;
+}
+
+:global(body) {
+  margin: 0;
+  background: #f3f1eb;
+  color: #222;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+:global(a) {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* HERO */
+
+.hero {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  background: #d8d5cc;
+}
+
+.hero img,
+.no-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d8d5cc;
+
+  color: #777;
+
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.7)
+    );
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  padding:
+    110px 7%
+    55px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  color: white;
+}
+
+.back {
+  width: fit-content;
+
+  padding:
+    10px 16px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.5);
+
+  border-radius: 4px;
+
+  font-size: 12px;
+
+  transition:
+    background 0.2s ease;
+}
+
+.back:hover {
+  background:
+    rgba(255, 255, 255, 0.15);
+}
+
+.hero-text p {
+  margin:
+    0 0 10px;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+
+  opacity: 0.85;
+}
+
+.hero-text h1 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      48px,
+      7vw,
+      82px
+    );
+
+  line-height: 0.95;
+
+  letter-spacing: -3px;
+
+  font-weight: 600;
+}
+
+
+/* DETAILS */
+
+.details {
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding:
+    70px 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1.5fr;
+
+  gap: 70px;
+}
+
+
+/* LEFT */
+
+.heading span,
+.bottom span {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #777;
+}
+
+.heading h2 {
+  margin:
+    15px 0 0;
+
+  font-size:
+    clamp(
+      38px,
+      5vw,
+      55px
+    );
+
+  line-height: 0.95;
+
+  letter-spacing: -2px;
+
+  font-weight: 600;
+}
+
+.heading h2 em {
+  display: block;
+
+  font-family: Georgia, serif;
+
+  font-weight: 400;
+}
+
+
+/* RIGHT */
+
+.content > p {
+  margin: 0;
+
+  max-width: 650px;
+
+  color: #666;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+/* INFO */
+
+.info {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 25px;
+
+  margin-top: 35px;
+
+  padding-top: 22px;
+
+  border-top:
+    1px solid #d8d5cc;
+}
+
+.info div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.info span {
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #888;
+}
+
+.info strong {
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+
+/* BOTTOM */
+
+.bottom {
+  padding:
+    55px 7%;
+
+  background: #e5e1d7;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.bottom h2 {
+  margin:
+    10px 0 0;
+
+  font-size:
+    clamp(
+      35px,
+      5vw,
+      55px
+    );
+
+  line-height: 0.95;
+
+  letter-spacing: -2px;
+}
+
+.bottom h2 em {
+  font-family: Georgia, serif;
+
+  font-weight: 400;
+}
+
+.bottom > a {
+  padding:
+    13px 19px;
+
+  background: #222;
+
+  color: white;
+
+  border-radius: 4px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    opacity 0.2s ease;
+}
+
+.bottom > a:hover {
+  opacity: 0.8;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+  .hero {
+    height: 480px;
+  }
+
+  .hero-content {
+    padding:
+      100px 6%
+      40px;
+  }
+
+  .hero-text h1 {
+    font-size: 52px;
+
+    letter-spacing: -2px;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+
+    padding:
+      55px 6%;
+  }
+
+  .heading h2 {
+    font-size: 42px;
+  }
+
+  .content > p {
+    font-size: 15px;
+  }
+
+  .info {
+    grid-template-columns:
+      1fr 1fr;
+
+    gap: 15px;
+  }
+
+  .bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    padding:
+      50px 6%;
+  }
+
+  .bottom h2 {
+    font-size: 42px;
+  }
+
+  .bottom > a {
+    margin-top: 5px;
+  }
+
+}
+
+</style>

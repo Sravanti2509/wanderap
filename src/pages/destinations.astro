@@ -4,7 +4,7 @@ import { sanityClient } from "../lib/sanity";
 import { urlFor } from "../lib/sanityImage";
 
 const destinations = await sanityClient.fetch(`
-  *[_type == "place"] | order(_createdAt asc)[0...3] {
+  *[_type == "place"] | order(_createdAt asc) {
     _id,
     title,
     description,
@@ -16,72 +16,42 @@ const destinations = await sanityClient.fetch(`
 `);
 ---
 
-<Layout title="WANDERAP | Discover Andhra Pradesh">
+<Layout title="Destinations | WANDERAP">
 
-  <!-- HERO -->
+  <main class="destinations">
 
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <p class="eyebrow">
-        DISCOVER ANDHRA PRADESH
-      </p>
-
-      <h1>
-        Explore<br />
-        <em>Andhra Pradesh.</em>
-      </h1>
-
-      <p class="hero-description">
-        Discover beautiful beaches, peaceful mountains,
-        green valleys and unforgettable destinations
-        across Andhra Pradesh.
-      </p>
-
-      <a href="/destinations" class="hero-button">
-        Explore Destinations
-        <span>→</span>
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- POPULAR DESTINATIONS -->
-
-  <section class="destinations">
+    <!-- HEADER -->
 
     <div class="section-header">
 
       <div>
 
         <p class="section-label">
-          POPULAR DESTINATIONS
+          DESTINATIONS
         </p>
 
-        <h2>
-          Explore destinations
-        </h2>
+        <h1>
+          Places to explore
+        </h1>
 
       </div>
 
-      <a
-        href="/destinations"
-        class="view-all"
-      >
-        View all destinations →
-      </a>
+      <span class="destination-count">
+        {destinations.length} places
+      </span>
 
     </div>
 
+
+    <!-- DESTINATION GRID -->
 
     <div class="destination-grid">
 
       {destinations.map((destination) => (
 
         <article class="destination-card">
+
+          <!-- IMAGE -->
 
           <a
             href={`/destinations/${destination.slug}`}
@@ -114,19 +84,22 @@ const destinations = await sanityClient.fetch(`
           </a>
 
 
+          <!-- CONTENT -->
+
           <div class="card-content">
 
             <p class="region">
               {destination.region}
             </p>
 
-            <h3>
+            <h2>
               {destination.title}
-            </h3>
+            </h2>
 
             <p class="description">
               {destination.description}
             </p>
+
 
             <div class="card-bottom">
 
@@ -152,16 +125,12 @@ const destinations = await sanityClient.fetch(`
 
     </div>
 
-  </section>
+  </main>
 
 </Layout>
 
 
 <style>
-
-/* =========================
-   GLOBAL
-========================= */
 
 :global(*) {
   box-sizing: border-box;
@@ -172,9 +141,10 @@ const destinations = await sanityClient.fetch(`
 }
 
 :global(body) {
+
   margin: 0;
 
-  background: #f8f7f3;
+  background: #eeeae1;
 
   color: #202321;
 
@@ -182,138 +152,14 @@ const destinations = await sanityClient.fetch(`
     Arial,
     Helvetica,
     sans-serif;
+
 }
 
 :global(a) {
+
   color: inherit;
+
   text-decoration: none;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-
-  min-height: 650px;
-
-  padding:
-    120px 8%;
-
-  display: flex;
-
-  align-items: center;
-
-  color: white;
-
-  background:
-    linear-gradient(
-      rgba(0,0,0,.30),
-      rgba(0,0,0,.68)
-    ),
-    url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2200&q=90")
-    center / cover;
-
-}
-
-.hero-content {
-
-  max-width: 650px;
-
-}
-
-.eyebrow {
-
-  margin:
-    0 0 20px;
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  letter-spacing: 3px;
-
-}
-
-.hero h1 {
-
-  margin: 0;
-
-  font-size:
-    clamp(
-      52px,
-      8vw,
-      88px
-    );
-
-  line-height: .94;
-
-  letter-spacing: -3px;
-
-}
-
-.hero h1 em {
-
-  font-family:
-    Georgia,
-    serif;
-
-  font-weight: 400;
-
-}
-
-.hero-description {
-
-  max-width: 520px;
-
-  margin:
-    25px 0 30px;
-
-  font-size: 16px;
-
-  line-height: 1.7;
-
-  opacity: .9;
-
-}
-
-.hero-button {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  padding:
-    14px 20px;
-
-  background: white;
-
-  color: #202321;
-
-  border-radius: 4px;
-
-  font-size: 13px;
-
-  font-weight: 600;
-
-  transition:
-    transform .2s ease;
-
-}
-
-.hero-button span {
-
-  font-size: 16px;
-
-}
-
-.hero-button:hover {
-
-  transform:
-    translateY(-2px);
 
 }
 
@@ -324,13 +170,20 @@ const destinations = await sanityClient.fetch(`
 
 .destinations {
 
+  min-height: 100vh;
+
   padding:
     75px 7%
-    90px;
+    100px;
 
-  background: #f8f7f3;
+  background: #eeeae1;
 
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 .section-header {
 
@@ -342,57 +195,57 @@ const destinations = await sanityClient.fetch(`
 
   gap: 30px;
 
-  margin-bottom: 30px;
+  margin-bottom: 38px;
 
 }
 
 .section-label {
 
-  margin: 0;
+  margin:
+    0 0 10px;
 
-  color: #777;
+  color: #77736b;
 
   font-size: 10px;
 
   font-weight: 700;
 
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
 
 }
 
-.section-header h2 {
+.section-header h1 {
 
-  margin:
-    9px 0 0;
+  margin: 0;
+
+  color: #202321;
 
   font-size:
     clamp(
-      32px,
-      4vw,
-      46px
+      38px,
+      5vw,
+      55px
     );
+
+  font-weight: 600;
 
   line-height: 1;
 
-  letter-spacing: -1.5px;
+  letter-spacing: -2px;
 
 }
 
-.view-all {
+.destination-count {
 
-  padding-bottom: 4px;
+  color: #77736b;
 
   font-size: 12px;
-
-  font-weight: 700;
-
-  white-space: nowrap;
 
 }
 
 
 /* =========================
-   DESTINATION GRID
+   GRID
 ========================= */
 
 .destination-grid {
@@ -402,18 +255,25 @@ const destinations = await sanityClient.fetch(`
   grid-template-columns:
     repeat(3, 1fr);
 
-  gap: 22px;
+  gap: 24px;
 
 }
+
+
+/* =========================
+   CARD
+========================= */
 
 .destination-card {
 
   overflow: hidden;
 
-  background: white;
+  background: #ffffff;
 
   border:
-    1px solid #e5e3dd;
+    1px solid #ddd8ce;
+
+  border-radius: 3px;
 
   transition:
     transform .25s ease,
@@ -424,11 +284,11 @@ const destinations = await sanityClient.fetch(`
 .destination-card:hover {
 
   transform:
-    translateY(-3px);
+    translateY(-4px);
 
   box-shadow:
-    0 10px 28px
-    rgba(0,0,0,.07);
+    0 14px 32px
+    rgba(48, 43, 35, .10);
 
 }
 
@@ -441,11 +301,11 @@ const destinations = await sanityClient.fetch(`
 
   width: 100%;
 
-  height: 230px;
+  height: 250px;
 
   overflow: hidden;
 
-  background: #ddd;
+  background: #d8d3c9;
 
 }
 
@@ -460,7 +320,7 @@ const destinations = await sanityClient.fetch(`
   object-fit: cover;
 
   transition:
-    transform .6s ease;
+    transform .55s ease;
 
 }
 
@@ -468,23 +328,25 @@ const destinations = await sanityClient.fetch(`
 .image-container img {
 
   transform:
-    scale(1.035);
+    scale(1.045);
 
 }
 
 .no-image {
 
   width: 100%;
+
   height: 100%;
 
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
-  background: #dedbd3;
+  background: #d8d3c9;
 
-  color: #777;
+  color: #77736b;
 
   font-size: 11px;
 
@@ -496,22 +358,22 @@ const destinations = await sanityClient.fetch(`
 
 
 /* =========================
-   CARD CONTENT
+   CONTENT
 ========================= */
 
 .card-content {
 
   padding:
-    22px 23px 21px;
+    22px 23px 23px;
 
 }
 
 .region {
 
   margin:
-    0 0 8px;
+    0 0 9px;
 
-  color: #8a8a84;
+  color: #8a867e;
 
   font-size: 10px;
 
@@ -519,11 +381,11 @@ const destinations = await sanityClient.fetch(`
 
   text-transform: uppercase;
 
-  letter-spacing: 1.7px;
+  letter-spacing: 1.5px;
 
 }
 
-.card-content h3 {
+.card-content h2 {
 
   margin: 0;
 
@@ -535,22 +397,29 @@ const destinations = await sanityClient.fetch(`
 
   line-height: 1.2;
 
-  letter-spacing: -.5px;
+  letter-spacing: -.4px;
 
 }
 
 .description {
 
-  margin:
-    11px 0 18px;
+  min-height: 43px;
 
-  color: #777;
+  margin:
+    12px 0 20px;
+
+  color: #74736e;
 
   font-size: 13px;
 
-  line-height: 1.6;
+  line-height: 1.65;
 
 }
+
+
+/* =========================
+   BOTTOM
+========================= */
 
 .card-bottom {
 
@@ -560,16 +429,18 @@ const destinations = await sanityClient.fetch(`
 
   justify-content: space-between;
 
-  padding-top: 14px;
+  gap: 15px;
+
+  padding-top: 15px;
 
   border-top:
-    1px solid #eeeeea;
+    1px solid #eeeae3;
 
 }
 
 .price {
 
-  color: #333;
+  color: #44443f;
 
   font-size: 13px;
 
@@ -614,7 +485,7 @@ const destinations = await sanityClient.fetch(`
    TABLET
 ========================= */
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
 
   .destination-grid {
 
@@ -632,34 +503,11 @@ const destinations = await sanityClient.fetch(`
 
 @media (max-width: 650px) {
 
-  .hero {
-
-    min-height: 570px;
-
-    padding:
-      100px 7%;
-
-  }
-
-  .hero h1 {
-
-    font-size: 52px;
-
-    letter-spacing: -2px;
-
-  }
-
-  .hero-description {
-
-    font-size: 15px;
-
-  }
-
   .destinations {
 
     padding:
-      60px 6%
-      70px;
+      55px 6%
+      75px;
 
   }
 
@@ -669,7 +517,17 @@ const destinations = await sanityClient.fetch(`
 
     flex-direction: column;
 
-    gap: 12px;
+    gap: 10px;
+
+    margin-bottom: 28px;
+
+  }
+
+  .section-header h1 {
+
+    font-size: 40px;
+
+    letter-spacing: -1.5px;
 
   }
 
@@ -683,13 +541,19 @@ const destinations = await sanityClient.fetch(`
 
   .image-container {
 
-    height: 220px;
+    height: 230px;
 
   }
 
-  .card-content h3 {
+  .card-content h2 {
 
     font-size: 22px;
+
+  }
+
+  .description {
+
+    min-height: auto;
 
   }
 

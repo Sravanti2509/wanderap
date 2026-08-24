@@ -1,0 +1,172 @@
+<header class="header">
+
+  <a href="/" class="logo">
+    WANDER<span>AP</span>
+  </a>
+
+  <nav>
+
+    <a href="/">Home</a>
+
+    <a href="/destinations">
+      Destinations
+    </a>
+
+    <a href="/experiences">
+      Experiences
+    </a>
+
+    <a href="/stays">
+      Stays
+    </a>
+
+    <a href="/about">
+      About
+    </a>
+
+  </nav>
+
+  <a href="/destinations" class="explore">
+    Explore Andhra →
+  </a>
+
+</header>
+
+
+<style>
+
+.header {
+
+  width: 100%;
+
+  min-height: 78px;
+
+  padding:
+    0 6%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #f8f7f3;
+
+  border-bottom:
+    1px solid #e6e3dc;
+
+  color: #202321;
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+  font-size: 21px;
+
+  font-weight: 800;
+
+  letter-spacing: 4px;
+
+}
+
+.logo span {
+
+  color: #888;
+
+}
+
+
+/* NAV */
+
+nav {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+}
+
+nav a {
+
+  color: #555;
+
+  font-size: 13px;
+
+  transition:
+    color .2s ease;
+
+}
+
+nav a:hover {
+
+  color: #111;
+
+}
+
+
+/* BUTTON */
+
+.explore {
+
+  padding:
+    10px 17px;
+
+  border:
+    1px solid #ccc;
+
+  border-radius: 4px;
+
+  color: #222;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  transition:
+    background .2s ease,
+    color .2s ease;
+
+}
+
+.explore:hover {
+
+  background: #222;
+
+  color: white;
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 750px) {
+
+  .header {
+
+    min-height: 70px;
+
+    padding:
+      0 5%;
+
+  }
+
+  nav {
+
+    display: none;
+
+  }
+
+  .explore {
+
+    display: none;
+
+  }
+
+}
+
+</style>
